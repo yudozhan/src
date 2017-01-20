@@ -1,3 +1,31 @@
+# res & Release folder
+res/
+Release/
+
+# VC++ project files
+*.obj
+*.lib
+*.dll
+*.dat
+*.bat
+*.txt
+*.XML
+*.user
+*.old
+*.vcproj
+*.sln
+*.tlb
+*.tlh
+*.tli
+*.OBJ
+*.APS
+*.clw
+*.opt
+*.plg
+*.rc
+*.suo
+*.ncb
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
