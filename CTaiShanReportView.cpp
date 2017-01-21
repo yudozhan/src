@@ -5602,17 +5602,17 @@ void CTaiShanReportView::OnFontChange()
 //    动态显示牌热键处理
 //
 //////////////////////////////////////////////////////////////////////////////
-long CTaiShanReportView::FindStockInNameSymbor(UINT nPage,char *zqdm)
+long CTaiShanReportView::FindStockInNameSymbor(UINT nType,char *zqdm)
 {
     CTaiShanDoc* pDoc = GetDocument();
 	int low=0;
-	int high=pDoc->m_sharesInformation.GetStockTypeCount(nPage) ;
+	int high=pDoc->m_sharesInformation.GetStockTypeCount(nType) ;
 	int mid=0;
 	CReportData *Cdat;
     while(low <= high)
 	{
 		 mid=(low+high)/2;
-		 pDoc->m_sharesInformation.GetStockItem(nPage,mid,Cdat);
+		 pDoc->m_sharesInformation.GetStockItem(nType,mid,Cdat);
 		 if(strcmp(Cdat->id , zqdm)>0) high=mid -1;
          else if(strcmp(Cdat->id , zqdm)< 0 ) low=mid +1;
 		 else 
@@ -5679,7 +5679,7 @@ void CTaiShanReportView::ScrollToSelectStock(char *zqdm,int nkind)
 					 pDoc->m_nStockTypeShPage=SHAG;
 					 m_pPageWnd->m_bRefresh=TRUE;
 					 m_pPageWnd->Invalidate();
-					 ScrollToPageOfStock(pDoc,SHAG,m_findzqdm);
+					 ScrollToPageOfStock(pDoc,m_pPageWnd->m_nActivePage,m_findzqdm);
 					 pDoc->m_nCurrentReportPage=m_pPageWnd->m_nActivePage;
 					 break;
 		   case SHBG:
@@ -5767,7 +5767,7 @@ void CTaiShanReportView::ScrollToSelectStock(char *zqdm,int nkind)
 					 pDoc->m_nStockTypeSzPage=SZAG;
 					 m_pPageWnd->m_bRefresh=TRUE;
 					 m_pPageWnd->Invalidate();
-					 ScrollToPageOfStock(pDoc,SZAG,m_findzqdm);
+					 ScrollToPageOfStock(pDoc,m_pPageWnd->m_nActivePage,m_findzqdm);
 					 pDoc->m_nCurrentReportPage=m_pPageWnd->m_nActivePage;
 					 break;
 		   case SZBG:
@@ -5851,19 +5851,19 @@ void CTaiShanReportView::ScrollToSelectStock(char *zqdm,int nkind)
 				   pDoc->m_nCurrentReportPage=m_pPageWnd->m_nActivePage;
 				   break;
 		   case SZZXQY:
-					 m_pPageWnd->m_nActivePage=SZPAGE;
+					 m_pPageWnd->m_nActivePage=ZXPAGE;
 					 pDoc->m_nStockTypeSzPage=SZZXQY;
 					 m_pPageWnd->m_bRefresh=TRUE;
 					 m_pPageWnd->Invalidate();
-					 ScrollToPageOfStock(pDoc,SZZXQY,m_findzqdm);
+					 ScrollToPageOfStock( pDoc, m_pPageWnd->m_nActivePage, m_findzqdm );
 					 pDoc->m_nCurrentReportPage=m_pPageWnd->m_nActivePage;
 					 break;
 		   case SZCYB:
-					 m_pPageWnd->m_nActivePage=SZPAGE;
+					 m_pPageWnd->m_nActivePage=CYPAGE;
 					 pDoc->m_nStockTypeSzPage=SZCYB;
 					 m_pPageWnd->m_bRefresh=TRUE;
 					 m_pPageWnd->Invalidate();
-					 ScrollToPageOfStock(pDoc,SZCYB,m_findzqdm);
+                     ScrollToPageOfStock( pDoc, m_pPageWnd->m_nActivePage, m_findzqdm );
 					 pDoc->m_nCurrentReportPage=m_pPageWnd->m_nActivePage;
 					 break;
 		   case BLOCKINDEX:
@@ -5879,17 +5879,21 @@ void CTaiShanReportView::ScrollToSelectStock(char *zqdm,int nkind)
 }
 void CTaiShanReportView::ScrollToPageOfStock(CTaiShanDoc* pDoc,int nPage,CString m_findzqdm)
 {
-	UINT m_pos;
-    m_pos=FindStockInNameSymbor(nPage, m_findzqdm.GetBuffer(0));
-	int index=0;
-	UINT DisplayCount=0;
+	LOGS("%s, nPage=%d, m_findzqdm=%s\r\n",__FUNCTION__, nPage, m_findzqdm.GetBuffer());
+    int nType = GetStockTypeFromPageWnd(nPage);
+    UINT m_pos;
+    m_pos=FindStockInNameSymbor(nType, m_findzqdm.GetBuffer(0));
+    int index=0;
+    UINT DisplayCount=0;
     m_pGrid->SetSortColumn(-1 ,TRUE);
-//    m_pGrid->RedrawRow(0);
 
-	int nType = GetStockTypeFromPageWnd(nPage);
+    LOGS("nType=%d\r\n", nType);
+
 
 	pDoc->m_nShowCount = pDoc->m_sharesInformation.GetStockTypeCount(nType);
 	DisplayCount = pDoc->m_nShowCount;
+    LOGS("pDoc->m_nShowCount=%d\r\n", pDoc->m_nShowCount);
+    
     SetShowData(pDoc,pDoc->m_sharesInformation.GetStockTypeCount(nType));
 
 	//change the real row numbers

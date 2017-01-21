@@ -185,7 +185,7 @@ public:
 	BOOL ChangeToBlock(CTaiShanDoc* pDoc,CString m_StockType) ;
     void PopMenuItemInit(CMenu *pMenuContext,UINT nRow);
 	UINT GetActivePage();
-	long FindStockInNameSymbor(UINT nPage,char *zqdm);
+	long FindStockInNameSymbor(UINT nType,char *zqdm);
     void ScrollToSelectStock(char *zqdm,int nKind);
     void HotKeyDownProgress(char  *HotKey);
 	void SortStockIndex(UINT nPage,UINT nID);
