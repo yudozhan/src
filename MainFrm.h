@@ -151,6 +151,8 @@ public:
 	void HqStock_Init();     //起动股票接收操作
 	void HqStock_Quit();     //退出股票接收操作
    //BOOL CalculateAlarm();
+    void MFmessageBox(char * str);
+    void MFLogs(char * str);
 
 	static CTaiScreen *m_pWndTJXG;
 	static CTaiScreenTest *m_pWndTJXGTest;

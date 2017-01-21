@@ -2639,7 +2639,7 @@ void CMainFrame::DrawTitleBar(CDC *pDC)
 		COLORREF clOldText=pDC->SetTextColor(RGB(255, 255, 255));
 		pDC->SelectStockObject(SYSTEM_FONT);//DEVICE_DEFAULT_FONT
 
-		CString strTitle = "证券分析软件";
+		CString strTitle = "证券定制软件";
 		CSize szTextLen = pDC->GetTextExtent(strTitle);
 
 
@@ -2903,3 +2903,28 @@ void CMainFrame::OnViewBlockanalysis()
 	//	m_pDoc->m_pBlockAnalysisView = pView;
 	//}
 }
+
+void CMainFrame::MFmessageBox(char * str)
+{
+    MessageBox(str);
+}
+
+void CMainFrame::MFLogs(char * str)
+{
+    CFile logFile;
+    CTime time = CTime::GetCurrentTime(); ///构造CTime对象
+    CString m_strTime = time.Format("%Y-%m-%d %H:%M:%S  ");  
+    
+    if(! logFile.Open("debuglogs.txt", CFile::modeCreate | CFile::modeNoTruncate | CFile::modeWrite) )
+    {
+        MessageBox("open logFile failed!");
+        return;
+    }
+    logFile.SeekToEnd();
+
+    m_strTime = m_strTime + str;
+    
+    logFile.Write( m_strTime.GetBuffer(), m_strTime.GetLength() );
+    logFile.Close();
+}
+

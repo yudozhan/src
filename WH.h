@@ -41,6 +41,11 @@
 #define WM_USER_COLNUM				(WM_USER + 1204)
  
 
+#include "stdio.h"
+#define MFMESBOX(info)                      ((CMainFrame *)(AfxGetApp()->m_pMainWnd))->MFLogs(info)
+#define LOGS(fm, ...)                       {char tmpbuf[1024]; sprintf(tmpbuf, fm, __VA_ARGS__); MFMESBOX(tmpbuf);}
+
+
 
 //////////////////////////////
 //following message are used in nineshowview

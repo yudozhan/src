@@ -576,7 +576,8 @@ BOOL CTaiShanDoc::OnNewDocument()
 
 	CTaiKlineFileHS::OpenAll();
 
-	this->SetTitle(""+g_strCompanyName+"分析软件");
+	//this->SetTitle(""+g_strCompanyName+"分析软件");
+	this->SetTitle("自己的牛B软件");			// zyd modified
 
 	time_t now; 
 	time( &now );
