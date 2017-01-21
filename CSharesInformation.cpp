@@ -479,7 +479,8 @@ BOOL CSharesInformation::InitRealTimeDataEmpty()
 //	#define MAXSTOCKDATABUFFER 40+STOCKTYPENUM*4+240*4*3+240*8*3+2000*3100
 	int iii = sizeof(Rsdn1);
 	int iiii = sizeof(Tidxd);
-    long m_FileLength=sizeof(REALDATA)+STOCKTYPENUM*sizeof(int)+240*3*sizeof(Rsdn1)+240*3*sizeof(Tidxd)+sizeof(CReportData)*4000;
+    long 
+    m_FileLength=sizeof(REALDATA)+STOCKTYPENUM*sizeof(int)+240*3*sizeof(Rsdn1)+240*3*sizeof(Tidxd)+sizeof(CReportData)*8000;
 	m_hFile=CreateFile(g_realtime,GENERIC_READ|GENERIC_WRITE,
 		FILE_SHARE_READ|FILE_SHARE_WRITE,
 		NULL,
@@ -522,7 +523,7 @@ BOOL CSharesInformation::InitRealTimeDataEmpty()
 
 	m_RealFileHead=(REALDATA *)m_pbData;
     m_RealFileHead->filetitle =12345678;
-	m_RealFileHead->MaxStockCount=4000; 
+	m_RealFileHead->MaxStockCount=8000; 
 	m_RealFileHead->StockCount =0;
 	m_RealFileHead->FileExitDone=87654321;
 	m_RealFileHead->Day=currDay;
