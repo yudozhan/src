@@ -1681,20 +1681,31 @@ void CTaiShanReportView::ChangeToPage(int nPage,BOOL NewTjxg)
        ChangeToBlock(pDoc,pDoc->m_SystemInitData.StockTypeName);
 	   return;
 	}
-	int nType;
 
-	nType = GetStockTypeFromPageWnd(nPage);
-	int DisplayCount;
-	pDoc->m_nShowCount = pDoc->m_sharesInformation.GetStockTypeCount(nType);
-	DisplayCount = pDoc->m_nShowCount;
+    int DisplayCount;
+    if( nPage==BGPAGE )
+    {
+        pDoc->m_nShowCount = pDoc->m_sharesInformation.GetStockTypeCount(SHAG)+pDoc->m_sharesInformation.GetStockTypeCount(SZAG)+pDoc->m_sharesInformation.GetStockTypeCount(SZCYB)+pDoc->m_sharesInformation.GetStockTypeCount(SZZXQY);
+        DisplayCount = pDoc->m_nShowCount;
+        LOGS("ALL_DisplayCount=%d\r\n", DisplayCount);
+        SetShowData(pDoc,DisplayCount);
+        pDoc->m_sharesInformation.RecvAllStockData(pDoc->m_pStockDataShow);
+    }
+    else
+    {
+    	int nType;
 
-	SetShowData(pDoc,DisplayCount);
+    	nType = GetStockTypeFromPageWnd(nPage);
 
+    	pDoc->m_nShowCount = pDoc->m_sharesInformation.GetStockTypeCount(nType);
+    	DisplayCount = pDoc->m_nShowCount;
 
-	//if(nType >= SHZS && nType < STOCKTYPENUM)
-	{
-
+        LOGS("DisplayCount=%d\r\n", DisplayCount);
+        
+    	SetShowData(pDoc,DisplayCount);
 		pDoc->m_sharesInformation.RecvStockDataForType(pDoc->m_pStockDataShow,nType);
+   }
+        
 		pDoc->StatisticStockData(pDoc->m_nWeightType);
 		//need change lmb
 		CHistoryDlg::DoHistory(pDoc->m_pStockDataShow, DisplayCount,this);
@@ -1718,7 +1729,7 @@ void CTaiShanReportView::ChangeToPage(int nPage,BOOL NewTjxg)
 		////////////////////////////////////////////////////////////////////////////
 
 		pDoc->m_nPreDisplayRow = DisplayCount;  
-	}
+
 	//else
 	//{
 	//	nTypeSh = nType/100 - 1;

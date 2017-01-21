@@ -175,8 +175,9 @@ void CPageWnd::InitAllPara()
 	str.Format("中小");
 	m_strPageTitle.Add(str);
 	str.Format("创业");
-	m_strPageTitle.Add(str);
-	str.Format("B 股");
+	m_strPageTitle.Add(str); 
+//	str.Format("B 股");
+    str.Format("ALL"); // page-6
 	m_strPageTitle.Add(str);
 	str.Format("权证");
 	m_strPageTitle.Add(str);

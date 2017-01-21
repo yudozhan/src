@@ -9,6 +9,7 @@
 #include "mainfrm.h"
 #include "CTaiShanDoc.h"
 #include "CSharesInformation.h"
+#include "WH.h"
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -137,6 +138,31 @@ BOOL  CSharesInformation::RecvStockDataForType(PSTOCKDATASHOW &p,UINT StockType)
 	return TRUE;
 }
 
+BOOL  CSharesInformation::RecvAllStockData(PSTOCKDATASHOW &p) 
+{
+    LOGS("CSharesInformation::RecvAllStockData()\r\n");
+    PSTOCKDATASHOW pShowBuf = p;
+
+	if(m_hFile==NULL||m_hFileMap==NULL /* || StockType >= STOCKTYPENUM*/)
+		return FALSE;
+
+    // SHAG
+    memcpy(pShowBuf,m_pData[SHAG],m_pdwStockCurrentCount[SHAG] * sizeof(STOCKDATASHOW));
+    pShowBuf += m_pdwStockCurrentCount[SHAG];
+
+    // SZAG
+    memcpy(pShowBuf,m_pData[SZAG],m_pdwStockCurrentCount[SZAG] * sizeof(STOCKDATASHOW));
+    pShowBuf += m_pdwStockCurrentCount[SZAG];
+
+    // SZZXQY
+    memcpy(pShowBuf,m_pData[SZZXQY],m_pdwStockCurrentCount[SZZXQY] * sizeof(STOCKDATASHOW));
+    pShowBuf += m_pdwStockCurrentCount[SZZXQY];
+
+    // SZCYB
+    memcpy(pShowBuf,m_pData[SZCYB],m_pdwStockCurrentCount[SZCYB] * sizeof(STOCKDATASHOW));
+
+	return TRUE;
+}
 
 BOOL CSharesInformation::Lookup(char *StockId,PCdat1 &pStockData,int nKind)  //按类找查股票
 {
