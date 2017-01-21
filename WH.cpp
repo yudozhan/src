@@ -425,11 +425,12 @@ BOOL CAboutDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	CTaiShanDoc *pDoc = CMainFrame::m_pDoc;
 	m_strUser=pDoc->m_strUser;
-	m_strPName = "分析软件";
+	m_strPName = "定制分析软件";
+    SetWindowText(m_strPName);  
 	m_strPName += "，1.00.001";
 
 	m_strUser=_T("本软件使用权属于：") + m_strUser;
-	CString str=_T("，版权所有 (C) 2002-2003 ");
+	CString str=_T("，版权所有 (C) 2012-2018 ");
 	m_strCompany = CString("上海科技有限公司版权所有") + str;
 
 	m_strSerial=pDoc->m_strSerial;
