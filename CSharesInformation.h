@@ -67,7 +67,7 @@ public:
 	BOOL InsertItem(char *StockId ,PCdat1 &pStockData,DWORD StockType); //按类找查股票
 	BOOL Lookup(char *StockId,PCdat1 &pStockData,int nKind);  //按类找查股票
 	BOOL  RecvStockDataForType(PSTOCKDATASHOW &p,UINT StockType); //将一类股票转换为可显示股票
-	BOOL  CSharesInformation::RecvAllStockData(PSTOCKDATASHOW &p);
+	BOOL  RecvAllStockData(PSTOCKDATASHOW &p);
 	BOOL  GetStatisticDataForType(PSTOCKDATASHOW &p,UINT StockType); //将一类股票统计数据转换为可显示股票
 
 	BOOL  SetMemoryAllocSize(DWORD StockType,unsigned int nSize);  //设置股票种类数 
