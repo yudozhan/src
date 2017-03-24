@@ -55,8 +55,8 @@ int CWHApp::m_gMessageID = 0;
 bool CWHApp::m_gbUseExe = false;
 bool CWHApp::m_gbDoInitate = true;
 
-//#define TEST_USER1
-CTime g_timeUseEnd(2009,10,30,8,0,0);
+#define TEST_USER1
+CTime g_timeUseEnd(2017,12,30,8,0,0);
 /////////////////////////////////////////////////////////////////////////////
 // CWHApp
 void DoHtmlHelp(CWnd* pWnd,int nID)
@@ -177,7 +177,7 @@ BOOL CWHApp::InitInstance()
 	}
 	else
 	{
-		AfxMessageBox("现在您所使用的是试用版，试用时间至2004年8月30日，到期后若想继续使用，请与系统供应商联系!",MB_OK | MB_ICONSTOP);
+	//	AfxMessageBox("现在您所使用的是试用版，试用时间至2004年8月30日，到期后若想继续使用，请与系统供应商联系!",MB_OK | MB_ICONSTOP);
 	}
 #endif
 

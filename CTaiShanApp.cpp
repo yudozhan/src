@@ -54,8 +54,7 @@ int CWHApp::m_gMessageID = 0;
 bool CWHApp::m_gbUseExe = false;
 bool CWHApp::m_gbDoInitate = true;
 
-//#define TEST_USER1
-CTime g_timeUseEnd(2005,10,30,8,0,0);
+extern CTime g_timeUseEnd;
 /////////////////////////////////////////////////////////////////////////////
 // CWHApp
 void DoHtmlHelp(CWnd* pWnd,int nID)
