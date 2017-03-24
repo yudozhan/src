@@ -59,6 +59,7 @@ public:
 
     BOOL  GetStockTypeMaxCount(DWORD StockType) { return m_dwStockMaxCount[StockType];}   //得到股票类型总数
 	long  GetCount();     //得到股票总数
+	CReportData * GetCReportData(void); // 得到股票行情数据结构
 	BOOL RemoveKey(char *StockId ,DWORD StockType); //按类找查股票
 	BOOL  GetStockItem(DWORD StockType,DWORD nPos,PCdat1 &pStockData);     //得到股票行情数据
 //	BOOL  RemoveKey(char *StockId);       //删除股票数据

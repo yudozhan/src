@@ -22,7 +22,7 @@ Release/
 *.clw
 *.opt
 *.plg
-*.rc
+#*.rc
 *.suo
 *.ncb
 

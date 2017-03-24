@@ -1777,3 +1777,9 @@ void CSharesInformation::UpdateCwData(void)
 	return;
 
 }
+
+CReportData *  CSharesInformation::GetCReportData(void)
+{
+    return m_pMapData;
+}
+

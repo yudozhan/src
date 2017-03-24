@@ -163,9 +163,9 @@ public:
 
     void SetImageList(CImageList* pList)          { m_pImageList = pList;             }
     CImageList* GetImageList() const              { return m_pImageList;              }
-
     void SetGridLines(int nWhichLines = GVL_BOTH) { m_nGridLines = nWhichLines; 
                                                     if (::IsWindow(GetSafeHwnd())) Invalidate(); }
+                                                    
     int  GetGridLines() const                     { return m_nGridLines;              }
 
     void SetEditable(BOOL bEditable = TRUE)       { m_bEditable = bEditable;          }

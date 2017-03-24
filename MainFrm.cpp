@@ -25,6 +25,7 @@
 #include  "DIALOGGSGL.h"
 #include "BgridCtrl.h"
 #include "CSharesBigBillDlg.h"
+#include "DialogCustomizeRanking.h"
 #include "CTaiScreen.h"
 #include "CTaiKlineIndicatorsManage.h"
 #include "CTaiScreenTest.h"
@@ -1570,8 +1571,11 @@ void CMainFrame::OnHelpTopic()
 //	HtmlHelp(m_hWnd,"ybw.chm",HH_HELP_CONTEXT,6000);	
 //---------- Begin --- 2002.11.25 lm Modify -----------------------
 //	::ShellExecute( m_hWnd, "open", "ybw.chm", NULL, NULL, SW_SHOWNORMAL);
-	DoHtmlHelp(this);
+//	DoHtmlHelp(this);
 //---------- End --- 2002.11.25 lm Modify -------------------------
+    CDialogCustomizeRanking *m_CustomizeRankingDlg=new CDialogCustomizeRanking;
+    m_CustomizeRankingDlg->Create(IDD_DIALOG_CUSTOMIZE_RANKING,NULL);
+    m_CustomizeRankingDlg->ShowWindow(SW_SHOW);
 }
 
 void CMainFrame::OnUpdateToolGsgl(CCmdUI* pCmdUI) 

@@ -196,6 +196,8 @@
 #define IDD_DQSUZL                      165
 #define IDD_DATARESTORE                 165
 #define IDB_30                          165
+#define IDD_DIALOG15                    165
+#define IDD_DIALOG_CUSTOMIZE_RANKING    165
 #define IDD_SHOW_TEXT                   166
 #define IDR_TOOLBAR1                    167
 #define IDD_LSSJGL                      167
@@ -1443,7 +1445,6 @@
 #define ID_VIEW_BLOCKANLYSIS            32786
 #define ID_FONT_CHANGE                  32787
 #define ID_YOU                          32787
-#define ID_VIEW_BLOCKANALYSIS           52787
 #define ID_LINESELF                     32788
 #define ID_STOCK_BSH                    32789
 #define ID_K_CACL                       32789
@@ -1685,6 +1686,7 @@
 #define ID_KLINE_YUE2                   42839
 #define ID_REPORT_AVE                   52780
 #define ID_REPORT_VAR                   52781
+#define ID_VIEW_BLOCKANALYSIS           52787
 #define ID_CHANGETYPE                   52797
 #define ID_REPORT_SUM                   52982
 #define ID_REPORT_MAX                   52983
@@ -1769,7 +1771,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        164
+#define _APS_NEXT_RESOURCE_VALUE        166
 #define _APS_NEXT_COMMAND_VALUE         32788
 #define _APS_NEXT_CONTROL_VALUE         1042
 #define _APS_NEXT_SYMED_VALUE           101
